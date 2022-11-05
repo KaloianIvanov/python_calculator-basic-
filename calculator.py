@@ -1,4 +1,4 @@
-#Basic Tkinter setup
+#Basic Tkinter setup and imports
 from tkinter import *
 import tkinter as tk
 import math
@@ -209,21 +209,29 @@ def enter():
     global first 
     global second
     if operation == "+":
+        second = entry.get()
         entry.delete(0, END)
         result = int(first) + int(second)
         entry.insert(0, int(result))
     elif operation == "-":
+        second = entry.get()
         entry.delete(0, END)
         result = int(first) - int(second)
         entry.insert(0, int(result))
     elif operation == "*":
+        second = entry.get()
         entry.delete(0, END)
         result = int(first) * int(second)
         entry.insert(0, int(result))
     elif operation == "/":
+        second = entry.get()
         entry.delete(0, END)
-        result = int(first) / int(second)
-        entry.insert(0, int(result))
+        #Basically saying to the code to write error if anything is divided by 0
+        if int(second) == 0:
+            entry.insert(0, "ERROR")
+        else:
+            result = int(first) / int(second)
+            entry.insert(0, int(result))
     elif operation == "**":
         entry.delete(0, END)
         result = int(first) * int(first)
@@ -275,6 +283,9 @@ def squared():
         operation = "**"
         first = entry.get()
         entry.delete(0, END)
+        #Directly showing the result when something so the user dont have to push enter
+        result = int(first) * int(first)
+        entry.insert(0, int(result))
 
 def rt_squared():
     global operation
@@ -318,6 +329,9 @@ def rt_squared():
         operation = "√"
         first = entry.get()
         entry.delete(0, END)
+        #Directly showing the result when something so the user dont have to push enter
+        result = math.sqrt(int(first))
+        entry.insert(0, int(result))
 
 #Creation and size of buttons
 btn1 = tk.Button(root,text="1",padx=24,pady=20,command = lambda:add(1))
