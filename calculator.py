@@ -3,18 +3,29 @@ from tkinter import *
 import tkinter as tk
 import math
 
+#the colors
+my_blue = "#F0FFFF",
+activebg_blue = "#89CFF0"
+
+#Main window
 root = Tk()
 root.title("kaloian's calculator")
+root.iconbitmap("C:/Users/Belov/Desktop/python shit/python projects/calculator/icon.ico")
+root.configure(bg = my_blue)
 
-
-
-#variables and entry/text boxes
-entry = Entry(root,width=10,font=('', 30))
-entry.grid(row=0,column=0,columnspan=4)
+#variables
 global operation
 global first 
 global second
 operation = 1
+
+#the colors
+my_blue = "#F0FFFF",
+activebg_blue = "#89CFF0"
+
+#Entry box
+entry = Entry(root,width=10,font=('', 30),bg = my_blue)
+entry.grid(row=0,column=0,columnspan=4)
 
 
 #Functions
@@ -209,29 +220,21 @@ def enter():
     global first 
     global second
     if operation == "+":
-        second = entry.get()
         entry.delete(0, END)
         result = int(first) + int(second)
         entry.insert(0, int(result))
     elif operation == "-":
-        second = entry.get()
         entry.delete(0, END)
         result = int(first) - int(second)
         entry.insert(0, int(result))
     elif operation == "*":
-        second = entry.get()
         entry.delete(0, END)
         result = int(first) * int(second)
         entry.insert(0, int(result))
     elif operation == "/":
-        second = entry.get()
         entry.delete(0, END)
-        #Basically saying to the code to write error if anything is divided by 0
-        if int(second) == 0:
-            entry.insert(0, "ERROR")
-        else:
-            result = int(first) / int(second)
-            entry.insert(0, int(result))
+        result = int(first) / int(second)
+        entry.insert(0, int(result))
     elif operation == "**":
         entry.delete(0, END)
         result = int(first) * int(first)
@@ -283,9 +286,6 @@ def squared():
         operation = "**"
         first = entry.get()
         entry.delete(0, END)
-        #Directly showing the result when something so the user dont have to push enter
-        result = int(first) * int(first)
-        entry.insert(0, int(result))
 
 def rt_squared():
     global operation
@@ -329,30 +329,27 @@ def rt_squared():
         operation = "√"
         first = entry.get()
         entry.delete(0, END)
-        #Directly showing the result when something so the user dont have to push enter
-        result = math.sqrt(int(first))
-        entry.insert(0, int(result))
 
 #Creation and size of buttons
-btn1 = tk.Button(root,text="1",padx=24,pady=20,command = lambda:add(1))
-btn2 = tk.Button(root,text="2",padx=24,pady=20,command = lambda:add(2))
-btn3 = tk.Button(root,text="3",padx=24,pady=20,command = lambda:add(3))
-btn4 = tk.Button(root,text="4",padx=24,pady=20,command = lambda:add(4))
-btn5 = tk.Button(root,text="5",padx=24,pady=20,command = lambda:add(5))
-btn6 = tk.Button(root,text="6",padx=24,pady=20,command = lambda:add(6))
-btn7 = tk.Button(root,text="7",padx=24,pady=20,command = lambda:add(7))
-btn8 = tk.Button(root,text="8",padx=24,pady=20,command = lambda:add(8))
-btn9 = tk.Button(root,text="9",padx=24,pady=20,command = lambda:add(9))
-btn0 = tk.Button(root,text="0",padx=24,pady=20,command = lambda:add(0))
+btn1 = tk.Button(root,text="1",padx=24,pady=20,bg = my_blue,activebackground = activebg_blue,command = lambda:add(1))
+btn2 = tk.Button(root,text="2",padx=24,pady=20,bg = my_blue,activebackground = activebg_blue,command = lambda:add(2))
+btn3 = tk.Button(root,text="3",padx=24,pady=20,bg = my_blue,activebackground = activebg_blue,command = lambda:add(3))
+btn4 = tk.Button(root,text="4",padx=24,pady=20,bg = my_blue,activebackground = activebg_blue,command = lambda:add(4))
+btn5 = tk.Button(root,text="5",padx=24,pady=20,bg = my_blue,activebackground = activebg_blue,command = lambda:add(5))
+btn6 = tk.Button(root,text="6",padx=24,pady=20,bg = my_blue,activebackground = activebg_blue,command = lambda:add(6))
+btn7 = tk.Button(root,text="7",padx=24,pady=20,bg = my_blue,activebackground = activebg_blue,command = lambda:add(7))
+btn8 = tk.Button(root,text="8",padx=24,pady=20,bg = my_blue,activebackground = activebg_blue,command = lambda:add(8))
+btn9 = tk.Button(root,text="9",padx=24,pady=20,bg = my_blue,activebackground = activebg_blue,command = lambda:add(9))
+btn0 = tk.Button(root,text="0",padx=24,pady=20,bg = my_blue,activebackground = activebg_blue,command = lambda:add(0))
 
-btnplus = tk.Button(root,text="+",padx=22,pady=19,font=('', 10),command = plus)
-btnminus = tk.Button(root,text="-",padx=24,pady=19,font=('', 10),command = minus)
-btndivide = tk.Button(root,text="/",padx=24,pady=19,font=('', 10),command = divide)
-btnmultiply = tk.Button(root,text="*",padx=22,pady=18,font=('', 11),command = multiply)
-btnsquared = tk.Button(root,text="^",padx=23,pady=18,font=('', 11),command = squared)
-btnrt_squared = tk.Button(root,text="√",padx=21,pady=18,font=('', 11),command = rt_squared)
-btnenter = tk.Button(root,text="ENTER",padx=41,pady=20,command = enter)
-btnclr = tk.Button(root,text="CLEAR",padx=41,pady=20,command = clear)
+btnplus = tk.Button(root,text="+",padx=22,pady=19,font=('', 10),bg = my_blue,activebackground = activebg_blue,command = plus)
+btnminus = tk.Button(root,text="-",padx=24,pady=19,font=('', 10),bg = my_blue,activebackground = activebg_blue,command = minus)
+btndivide = tk.Button(root,text="/",padx=24,pady=19,font=('', 10),bg = my_blue,activebackground = activebg_blue,command = divide)
+btnmultiply = tk.Button(root,text="*",padx=22,pady=18,font=('', 11),bg = my_blue,activebackground = activebg_blue,command = multiply)
+btnsquared = tk.Button(root,text="^",padx=23,pady=18,font=('', 11),bg = my_blue,activebackground = activebg_blue,command = squared)
+btnrt_squared = tk.Button(root,text="√",padx=21,pady=18,font=('', 11),bg = my_blue,activebackground = activebg_blue,command = rt_squared)
+btnenter = tk.Button(root,text="ENTER",padx=41,pady=20,bg = my_blue,activebackground = activebg_blue,command = enter)
+btnclr = tk.Button(root,text="CLEAR",padx=41,pady=20,bg = my_blue,activebackground = activebg_blue,command = clear)
 
 
 #Positions of buttons
